@@ -1,5 +1,5 @@
 # modeling
-import numpy as np
+import numpy as np # tensorflow 2.9.1 깔아야함 / pip install tensorflow == 2.9.1
 import matplotlib.pyplot as plt
 from keras.models import *
 from keras.layers import *
@@ -27,7 +27,7 @@ model.summary()
 model.compile(loss='categorical_crossentropy', optimizer='adam',
               metrics=['accuracy'])
 fit_hist = model.fit(X_train, Y_train, batch_size=128,
-                     epochs=1000, validation_data=(X_train, Y_train))
+                     epochs=10, validation_data=(X_train, Y_train))
 model.save('./yogiyo_category_classification_model_{}.h5'.format(
     np.round(fit_hist.history['val_accuracy'][-1], 3)))
 plt.plot(fit_hist.history['accuracy'], label='accuracy')

@@ -2,6 +2,7 @@
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
+from konlpy.tag import Okt
 from keras_preprocessing.text import Tokenizer
 from keras_preprocessing.sequence import pad_sequences
 from sklearn.preprocessing import LabelEncoder
@@ -24,6 +25,14 @@ with open('./label_encoder.pickle', 'wb') as f:
     pickle.dump(encoder, f)
 onehot_Y = to_categorical(labeled_Y)
 print(onehot_Y[:5])
+
+# okt = Okt()
+# for i in range(len(X)):
+#     X[i] = okt.morphs(X[i], stem=True)          # 형태소로 바꾼후 동사원형(stem=True)으로 바꿔준다.
+#     if i % 100 == 0 :                           # 몇개를 했는지 알기 위해 점 찍기!
+#         print('.', end ='')
+#     if i % 1000 == 0:
+#         print()
 
 token = Tokenizer()     # 자연어 처리를 위해 라벨링, 문장으로부터 단어를 토큰화하고 숫자에 대응시키는 딕셔너리를 사용
 token.fit_on_texts(X)

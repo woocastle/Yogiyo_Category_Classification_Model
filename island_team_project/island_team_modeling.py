@@ -10,7 +10,7 @@ print(X_train.shape, Y_train.shape)
 print(X_test.shape, Y_test.shape)
 
 model = Sequential()
-model.add(Embedding(7021, 300, input_length=5))                 # 7021차원을 300차원으로 줄이는 것
+model.add(Embedding(7021, 150, input_length=5))                 # 7021차원을 300차원으로 줄이는 것
 model.add(Conv1D(32, kernel_size=5, padding='same', activation='relu'))
 model.add(MaxPool1D(pool_size=1))           # pool_size는 변화 없으므로 안써줘도 되지만 관습적으로 써놓자
 model.add(GRU(128, activation='tanh', return_sequences=True))           # return_sequences=True 를 주면 계산해서 나오는 값들을 저장해서 sequences 형태로 넘겨준다.
@@ -26,7 +26,7 @@ model.summary()
 
 model.compile(loss='categorical_crossentropy', optimizer='adam',
               metrics=['accuracy'])
-fit_hist = model.fit(X_train, Y_train, batch_size=128,
+fit_hist = model.fit(X_train, Y_train, batch_size=64,
                      epochs=100, validation_data=(X_train, Y_train))
 model.save('./yogiyo_category_classification_model_{}.h5'.format(
     np.round(fit_hist.history['val_accuracy'][-1], 3)))

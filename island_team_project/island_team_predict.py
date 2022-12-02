@@ -1,4 +1,3 @@
-# predict
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
@@ -32,7 +31,7 @@ for i in range(len(tokened_X)):
         tokened_X[i] = tokened_X[i][:5] # 20개까지만 슬라이싱
 X_pad = pad_sequences(tokened_X, 5)
 
-model = load_model('./yogiyo_category_classification_model_0.733.h5')
+model = load_model('./yogiyo_category_classification_model_0.734.h5')
 preds = model.predict(X_pad)
 label = encoder.classes_ # label은 label인코더가 가지고 있다.
 category_preds = []
@@ -49,8 +48,8 @@ for i in range(len(df)):
         df.loc[i, 'OX'] = True
 df.info()
 
-print(df.head(-100))
+print(df.head(30))
 print(df['OX'].value_counts())
 print(df['OX'].mean())
 print(df.loc[df['OX']==False])
-df.to_csv('./crawling_data_test_OX.csv', index=False)
+# df.to_csv('./island_data_test_OX.csv', index=False)

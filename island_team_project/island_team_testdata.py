@@ -1,4 +1,4 @@
-# 요기요 크롤링
+# 요기요 타지역 크롤링
 from selenium import webdriver
 import time
 from bs4 import BeautifulSoup
@@ -10,9 +10,9 @@ driver = webdriver.Chrome('./chromedriver.exe') # 크롬드라이버 경로 설�
 url = "https://www.yogiyo.co.kr/" # 사이트 입력
 driver.get(url) # 사이트 오픈
 driver.maximize_window() # 전체창
-time.sleep(1) # 2초 지연
+time.sleep(1) # 1초 지연
 
-place = ['능동로17길 39']    # 동성로5길 54
+place = ['서대문구 신촌로 83']    # test1 - ???    test2 - 능동로17길 39  test3 - 서대문구 신촌로 83
 category = ['치킨', '피자/양식', '중국집', '한식', '일식/돈까스',
             '족발/보쌈', '야식', '분식', '카페/디저트']
 
@@ -78,7 +78,7 @@ for i in place:
         df_restaurant = pd.concat([df_restaurant, df_section_titles], axis='rows', ignore_index=True)
 
         # csv 파일형태로 저장
-        df_restaurant.to_csv('./crawling_data_test2.csv', index=False)
+        df_restaurant.to_csv('./crawling_data_test3.csv', index=False)
 
     time.sleep(1)
 

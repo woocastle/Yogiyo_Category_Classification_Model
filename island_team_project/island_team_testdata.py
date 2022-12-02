@@ -12,7 +12,7 @@ driver.get(url) # 사이트 오픈
 driver.maximize_window() # 전체창
 time.sleep(1) # 1초 지연
 
-place = ['서대문구 신촌로 83']    # test1 - ???    test2 - 능동로17길 39  test3 - 서대문구 신촌로 83
+place = ['중구 퇴계로 126']    # test1 - 중구 퇴계로 126   test2 - 능동로17길 39   test3 - 서대문구 신촌로 83
 category = ['치킨', '피자/양식', '중국집', '한식', '일식/돈까스',
             '족발/보쌈', '야식', '분식', '카페/디저트']
 
@@ -78,7 +78,7 @@ for i in place:
         df_restaurant = pd.concat([df_restaurant, df_section_titles], axis='rows', ignore_index=True)
 
         # csv 파일형태로 저장
-        df_restaurant.to_csv('./crawling_data_test3.csv', index=False)
+        df_restaurant.to_csv('./crawling_data_test.csv', index=False)
 
     time.sleep(1)
 
